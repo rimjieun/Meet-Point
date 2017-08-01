@@ -11,40 +11,37 @@ h1, h4 {
   color: #e68a00;
 }
 
-.input-section {
-  margin-top: 100px;
-}
-
 .relative {
- position: relative;
+  position: relative;
 }
 
 .absolute {
   position: absolute;
 }
 
-.notification-btn {
-  top: 0;
+div.notifications {
+  width: 195px;
   left: 0;
 }
 
-.fixed-action-btn.horizontal.notification-btn ul {
-  text-align: right;
-  right: -35px;
-  top: -5px;
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
-  height: 100%;
-  left: auto;
-  width: 500px;
+a.notifications {
+  top: 10px;
+  display: block;
 }
 
+.fixed-action-btn.horizontal ul {
+  width: 110px;
+  right: 0;
+}
 
+ul.notifications li {
+  float: left;
+}
 
-/*.fixed-action-btn.horizontal ul {
-  top: 0;
-  right: -10px;
-}*/
+.input-section {
+  margin-top: 100px;
+}
+
 
 
 .orange-background {
