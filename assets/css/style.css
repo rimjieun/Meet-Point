@@ -9,9 +9,47 @@ html {
 h1, h4 {
   font-family: 'Lobster', cursive;
   color: #e68a00;
-  
 }
 
 .input-section {
   margin-top: 100px;
+}
+
+.relative {
+ position: relative;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.notification-btn {
+  top: 0;
+  left: 0;
+}
+
+.fixed-action-btn.horizontal.notification-btn ul {
+  text-align: right;
+  right: -35px;
+  top: -5px;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  height: 100%;
+  left: auto;
+  width: 500px;
+}
+
+
+/*.fixed-action-btn.horizontal ul {
+  top: 0;
+  right: -10px;
+}*/
+
+
+.orange-background {
+  background-color: #e68a00;
+}
+
+.orange-background:hover {
+  background-color: #e68a00;
 }
