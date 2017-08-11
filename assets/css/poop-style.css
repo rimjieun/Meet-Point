@@ -1,0 +1,99 @@
+html {
+  background: #f5f2f0;
+}
+
+*{
+  box-sizing: border-box;
+}
+
+h1, h4 {
+  font-family: 'Lobster', cursive;
+  color: #e68a00;
+}
+
+.input-section {
+  margin-top: 80px;
+}
+
+.orange-background {
+  background-color: #e68a00;
+}
+
+.orange-background:hover {
+  background-color: #e68a00;
+}
+
+
+.col.count {
+  /*background: blue;*/
+  height: 3rem;
+  position: relative;
+}
+
+.fa.fa-user {
+  font-size: 20px;
+  position: absolute;
+  bottom: 0;
+  /*color: #26a69a;*/
+  color: #595959;
+}
+
+.fa.fa-user p {
+  font-family: "Roboto", sans-serif;
+  font-size: 9px;
+  margin-top: 2px;
+}
+
+.notification-container {
+  position: absolute;
+  bottom: 0;
+}
+
+.fa.fa-envelope-o, .fa.fa-comment-o {
+  font-size: 1.8rem;
+  margin: 0 0.8rem;
+  color: #595959;
+}
+
+.fa.fa-envelope-o:hover {
+  color: #e60000;
+  cursor: pointer;
+}
+
+.fa.fa-comment-o:hover {
+  color: #003399;
+  cursor: pointer;
+}
+
+.col.name {
+  /*background: green;*/
+}
+
+.col.address {
+  /*background: pink;*/
+}
+
+.col.notification {
+  /*background: orange;*/
+  height: 3rem;
+  position: relative;
+}
+
+p.current-location-link {
+  font-size: 10px;
+  color: #595959;
+}
+
+p.current-location-link:hover {
+  color: #26a69a;
+  cursor: pointer
+}
+
+.fa.fa-plus, .fa.fa-arrow-right {
+  font-size: 18px;
+  color: #f5f2f0;
+}
+
+a.add-btn, a.go-btn {
+  margin: 30px 7px;
+}
