@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>MeetPoint</title>
@@ -8,21 +9,42 @@
   <!-- Lobster Font -->
   <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
   <!-- Materialize CSS -->
-  <link rel="stylesheet" href="./assets/css/materialize.css">
+  <!-- <link rel="stylesheet" href="./assets/css/materialize.css"> -->
   <!-- Main CSS -->
   <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
   <!-- jQuery -->
   <script src="https://code.jquery.com/jquery.js"></script>
   <!-- Materialize JS -->
-  <script type="text/javascript" src="./assets/js/materialize.js"></script>
-  <!-- Main Script  -->
-  <script type="text/javascript" src="./assets/js/index.js"></script>
+  <!-- <script type="text/javascript" src="./assets/js/materialize.js"></script> -->
+  <!-- Roboto Font -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <!-- Google Maps JavaScript API -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBXVMfGC-uz0W8eYzwy85Kv91y6B1902ig&libraries=places"></script>
   <!-- Font Awesome Script -->
   <script src="https://use.fontawesome.com/6b00624f40.js"></script>
   <!-- Viewport -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
+
 <body>
+  <header>MeetPoint</header>
+  <form>
+    <input type="text" name="lat" id="lat">
+    <label for="lat">Lat</label>
+    <input type="text" name="lng" id="lng">
+    <label for="lng">Lng</label>
+    <input type="submit" value="Submit" id="submit-btn">
+  </form>
+  <div id="map"></div>
+
   
+  
+
+
+
+  <!-- Main Script  -->
+  <script type="text/javascript" src="./assets/js/index.js"></script>
+
 </body>
+
 </html>
