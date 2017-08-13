@@ -6,18 +6,16 @@
   <title>MeetPoint</title>
   <!-- Reset CSS -->
   <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
-  <!-- Lobster Font -->
-  <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+  <!-- Pacifico -->
+  <link href="https://fonts.googleapis.com/css?family=Caveat+Brush|Pacifico" rel="stylesheet">
   <!-- Materialize CSS -->
-  <!-- <link rel="stylesheet" href="./assets/css/materialize.css"> -->
+  <link rel="stylesheet" href="./assets/css/materialize.css">
   <!-- Main CSS -->
   <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
   <!-- jQuery -->
   <script src="https://code.jquery.com/jquery.js"></script>
   <!-- Materialize JS -->
-  <!-- <script type="text/javascript" src="./assets/js/materialize.js"></script> -->
-  <!-- Roboto Font -->
-  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <script type="text/javascript" src="./assets/js/materialize.js"></script>
   <!-- Google Maps JavaScript API -->
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBXVMfGC-uz0W8eYzwy85Kv91y6B1902ig&libraries=places"></script>
   <!-- Font Awesome Script -->
@@ -27,15 +25,26 @@
 </head>
 
 <body>
-  <header>MeetPoint</header>
-  <form>
-    <input type="text" name="lat" id="lat">
-    <label for="lat">Lat</label>
-    <input type="text" name="lng" id="lng">
-    <label for="lng">Lng</label>
-    <input type="submit" value="Submit" id="submit-btn">
-  </form>
-  <div id="map"></div>
+
+  <header class="orange-background white-text">
+    MeetPoint
+    <nav>
+      <div class="nav-wrapper">
+        <form>
+          <div class="input-field">
+            <input id="search" type="search" required>
+            <label class="label-icon" for="search"><i class="fa fa-search" aria-hidden="true"></i></label>
+            <i class="material-icons">close</i>
+          </div>
+        </form>
+      </div>
+    </nav>
+  </header>
+  <div id="map">
+
+  </div>
+  
+  
 
   
   

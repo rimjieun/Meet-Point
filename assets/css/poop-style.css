@@ -1,5 +1,5 @@
 html {
-  background: #f5f2f0;
+  background: #f5f2f0; /*ivory*/
 }
 
 *{
@@ -8,7 +8,7 @@ html {
 
 h1, h4 {
   font-family: 'Lobster', cursive;
-  color: #e68a00;
+  color: #e68a00; /*orange*/
 }
 
 .input-section {
