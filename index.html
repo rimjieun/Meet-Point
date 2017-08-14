@@ -6,6 +6,8 @@
   <title>MeetPoint</title>
   <!-- Reset CSS -->
   <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+  <!-- Roboto -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
   <!-- Pacifico -->
   <link href="https://fonts.googleapis.com/css?family=Caveat+Brush|Pacifico" rel="stylesheet">
   <!-- Materialize CSS -->
@@ -25,35 +27,37 @@
 </head>
 
 <body>
-
   <header class="orange-background white-text">
-    MeetPoint
-    <nav>
+    <span class="pacifico-font">MeetPoint</span>
+    <div class="search-box">
+      <div class="left">
+        <i class="fa fa-search" aria-hidden="true"></i>
+      </div>
+      <div class="left">
+        <form class="browser-default search-box">
+          <input class="browser-default search-box" type="search" id="search" name="search">
+        </form>
+      </div>
+      <div class="left">
+        xasdfasdfsadfsadf
+      </div>
+    </div>
+    <!--     <nav>
       <div class="nav-wrapper">
         <form>
           <div class="input-field">
             <input id="search" type="search" required>
-            <label class="label-icon" for="search"><i class="fa fa-search" aria-hidden="true"></i></label>
+            <label class="label-icon" for="search"></label>
             <i class="material-icons">close</i>
           </div>
         </form>
       </div>
-    </nav>
+    </nav> -->
   </header>
-  <div id="map">
-
+  <!-- <div id="map"> -->
   </div>
-  
-  
-
-  
-  
-
-
-
   <!-- Main Script  -->
   <script type="text/javascript" src="./assets/js/index.js"></script>
-
 </body>
 
 </html>

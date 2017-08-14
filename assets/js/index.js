@@ -37,11 +37,11 @@ function initMap(center) {
   });
 
   var marker = new google.maps.Marker({
-      draggable: true,
-      animation: google.maps.Animation.DROP,
-      position: center,
-      map: map
-    });
+    draggable: true,
+    animation: google.maps.Animation.DROP,
+    position: center,
+    map: map
+  });
 
   google.maps.event.addListener(marker, 'dragend', function(marker){
     var latLng = marker.latLng; 

@@ -1,10 +1,15 @@
 html,
 body {
   height: 100%;
+  font-family: 'Roboto', sans-serif;
 }
 
 * {
-  box-sizing: border-box;
+  box-sizing: border-box !important;
+}
+
+.pacifico-font {
+  font-family: 'Pacifico', cursive;
 }
 
 .orange-background {
@@ -17,9 +22,12 @@ body {
   color: #f5f2f0;
 }
 
+.left {
+  float: left;
+}
+
 header {
   height: 8%;
-  font-family: 'Pacifico', cursive;
   font-size: 2.7rem;
   line-height: 3.5rem;
   text-align: right;
@@ -27,14 +35,31 @@ header {
   position: relative;
 }
 
-nav {
-  width: 25rem;
-  height: 70%;
-  background: #f5f2f0;
+div.search-box {
   position: absolute;
-  top: 15%;
-  left: 0.5%;
-  /*border: 10px solid black;*/
+  height: 80%;
+  width: 25%;
+  top: 10%;
+  left: 1%;
+  background: white;
+  font-size: 1rem;
+  color: black;
+}
+
+form.search-box {
+  position: absolute;
+  top: 0;
+  border: none;
+}
+
+input,
+input:focus {
+  width: 100%;
+/*  border: none !important;*/
+}
+
+i.fa.fa-search {
+  padding: 0 1rem;
 }
 
 #map {
