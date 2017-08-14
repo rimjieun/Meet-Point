@@ -63,3 +63,14 @@ $("#submit-btn").on("click", function(e) {
     initMap(center);
 
   });
+
+
+
+
+$("#group-btn").on("click", function() {
+
+});
+
+$("#add-member-btn").on("click", function() {
+
+});

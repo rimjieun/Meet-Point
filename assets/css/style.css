@@ -8,8 +8,9 @@ body {
   box-sizing: border-box !important;
 }
 
-.pacifico-font {
+.logo {
   font-family: 'Pacifico', cursive;
+  line-height: 60px;
 }
 
 .orange-background {
@@ -19,7 +20,7 @@ body {
 
 .white-text {
   /*color: #eae5e1;*/
-  color: #f5f2f0;
+  color: #f5f2f0 !important;
 }
 
 .left {
@@ -28,25 +29,32 @@ body {
 
 header {
   height: 8%;
-  font-size: 2.7rem;
-  line-height: 3.5rem;
+  font-size: 42px;
+  line-height: 50px;
   text-align: right;
-  padding-right: 2rem;
+  padding: 0 10px;
   position: relative;
+  box-shadow: 0 8px 13px rgba(0,0,0,.25) !important;
+  z-index: 20;
+}
+
+h1 {
+  margin: 0;
+  font-size: 42px;
 }
 
 div.search-box {
   position: absolute;
-  height: 80%;
-  width: 25%;
-  top: 10%;
-  left: 1%;
+  height: 46px;
+  width: 350px;
+  top: 7px;
   background: white;
   font-size: 1rem;
   color: black;
 }
 
 form.search-box {
+  width: 265px;
   position: absolute;
   top: 0;
   border: none;
@@ -55,13 +63,29 @@ form.search-box {
 input,
 input:focus {
   width: 100%;
-/*  border: none !important;*/
+  border: none;
+  outline: none;
 }
 
-i.fa.fa-search {
+i.fa.fa-search,
+i.fa.fa-times {
   padding: 0 1rem;
+}
+
+.member-btns {
+  position: absolute;
+  top: 7.5px;
+  left: 375px;
+  font-size: 30px;
+}
+
+i.fa.fa-users,
+i.fa.fa-user-plus {
+  padding: 0 5px;
 }
 
 #map {
   height: 92%;
+  position: relative;
+  z-index: 10;
 }
