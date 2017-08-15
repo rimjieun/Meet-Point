@@ -72,7 +72,7 @@ i.fa.fa-times {
   padding: 0 1rem;
 }
 
-.member-btns {
+div.member-btns {
   position: absolute;
   top: 7.5px;
   left: 375px;
@@ -84,8 +84,22 @@ i.fa.fa-user-plus {
   padding: 0 5px;
 }
 
+i.fa.fa-users:hover,
+i.fa.fa-user-plus:hover {
+  color: #82e3d9 !important;
+  /*cursor: pointer;*/
+}
+
 #map {
   height: 92%;
   position: relative;
   z-index: 10;
+}
+
+#group-info {
+  width: 400px;
+}
+
+#new-member-form {
+  width: 400px;
 }

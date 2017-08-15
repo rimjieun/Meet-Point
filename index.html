@@ -3,6 +3,8 @@
 
 <head>
   <meta charset="UTF-8">
+  <!-- Viewport -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>MeetPoint</title>
   <!-- Reset CSS -->
   <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
@@ -11,19 +13,18 @@
   <!-- Pacifico -->
   <link href="https://fonts.googleapis.com/css?family=Caveat+Brush|Pacifico" rel="stylesheet">
   <!-- Materialize CSS -->
-  <link rel="stylesheet" href="./assets/css/materialize.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css">
   <!-- Main CSS -->
   <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
   <!-- jQuery -->
-  <script src="https://code.jquery.com/jquery.js"></script>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
   <!-- Materialize JS -->
-  <script type="text/javascript" src="./assets/js/materialize.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/js/materialize.min.js"></script>
   <!-- Google Maps JavaScript API -->
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBXVMfGC-uz0W8eYzwy85Kv91y6B1902ig&libraries=places"></script>
   <!-- Font Awesome Script -->
   <script src="https://use.fontawesome.com/6b00624f40.js"></script>
-  <!-- Viewport -->
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+
 </head>
 
 <body>
@@ -43,12 +44,46 @@
       </div>
     </div>
     <div class="member-btns">
-      <i id="group-btn" class="fa fa-users white-text" aria-hidden="true"></i>
-      <i id="add-member-btn" class="fa fa-user-plus white-text" aria-hidden="true"></i>
+      <a href="#group-modal"><i id="group-btn" class="fa fa-users white-text" aria-hidden="true" href="#group-info"></i></a>
+      <i id="add-member-btn" class="fa fa-user-plus white-text" aria-hidden="true" href="#new-member-form"></i>
     </div>
   </header>
   <div id="map">  
   </div>
+
+  <!-- Group Info Modal -->
+  <div id="group-info" class="modal modal-fixed-footer">
+    <div class="modal-content">
+      <h4>Group Info</h4>
+      <ul>
+        <li>Jieun</li>
+        <li>Quynh</li>
+        <li>Gloria</li>
+      </ul>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Add Person</a>
+    </div>
+  </div>
+
+  <!-- New Member Form Modal -->
+  <div id="new-member-form" class="modal">
+    <div class="modal-content">
+      <h4>New Person</h4>
+      <form>
+        <label for="name">Name</label>
+        <input type="text" name="name">
+        <label for="location">Location</label>
+        <input type="text" name="location">
+      </form>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">ADD</a>
+    </div>
+  </div>
+
+  
+
   <!-- Main Script  -->
   <script type="text/javascript" src="./assets/js/index.js"></script>
 </body>

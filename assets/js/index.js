@@ -33,7 +33,10 @@ var center = {lat: 33.902589225, lng: -84.369156975};
 function initMap(center) {
   var map = new google.maps.Map(document.getElementById('map'), {
     zoom: 11,
-    center: center
+    center: center,
+    mapTypeControlOptions: {
+      mapTypeIds: []
+    }
   });
 
   var marker = new google.maps.Marker({
@@ -65,12 +68,12 @@ $("#submit-btn").on("click", function(e) {
   });
 
 
-
+$(".modal").modal();
 
 $("#group-btn").on("click", function() {
-
+  $("#group-info").modal('open');
 });
 
 $("#add-member-btn").on("click", function() {
-
+  $("#new-member-form").modal('open');
 });
