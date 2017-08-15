@@ -103,3 +103,45 @@ i.fa.fa-user-plus:hover {
 #new-member-form {
   width: 400px;
 }
+
+h5 {
+  margin-bottom: 35px;
+  text-align: center;
+  color: grey;
+  font-size: 35px
+}
+
+ul.group-list {
+  padding: 0 25px !important;
+}
+
+li.person {
+  margin-bottom: 30px;
+}
+
+div.person-icon {
+  display: inline;
+  font-size: 25px;
+  margin-right: 25px;
+  position: relative;
+  top: 10px;
+}
+
+div.person-info {
+  display: inline;
+  font-size: 20px;
+  margin-right: 8px;
+}
+
+p.person-address {
+  width: 90%;
+  font-size: 12px;
+  margin-top: 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+i.fa.fa-pencil {
+  margin-bottom: 7px;
+}
