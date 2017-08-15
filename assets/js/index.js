@@ -52,18 +52,18 @@ $('#person-modal-btn').on('click', function() {
 
 var group = [];
 
-function Person(name, add, coords, noti, method, cont) {
+function Person(name, add, lat, lng, noti, method, cont) {
   this.name = name;
   this.address = add;
-  this.coordinates = coords;
-  this.wantNotification = noti;
+  this.lat = lat;
+  this.lng = lng;
   this.notificationMethod = method;
   this.contactInfo = cont;
 }
 
 function convertToCoords(address) {
 
-  var coords = [];
+  var coords = {};
 
   var geocodeURL = 'https://maps.googleapis.com/maps/api/geocode/json';
   var geocodeKey = 'AIzaSyBXVMfGC-uz0W8eYzwy85Kv91y6B1902ig';
@@ -78,25 +78,32 @@ function convertToCoords(address) {
     method: 'GET'
   }).done(function(response) {
 
-    coords.push(response.results[0].geometry.location.lat);
-    coords.push(response.results[0].geometry.location.lng);
+    return response;
+
 
   }).fail(function(err) {
-    coords = err;
+    return err;
   });
 
-  return coords;
 }
 
-function addPerson(name, address, coords) {
-  var newPersonItem = $('<li class="person" data-name="' + name + '" data-address="' + address + '"><div class="person-icon left"><i class="fa fa-user" aria-hidden="true"></i></div><div class="person-info left"><p class="person-name">' + name + '</p><p class="person-address">' + address + '</p></div><div class="person-options"><p><i class="fa fa-pencil" aria-hidden="true"></i></p><p><i class="fa fa-trash" aria-hidden="true"></i></p></div></li>');
+function addPerson(name, address, lat, lng) {
+  var newPersonItem = $('<li class="person" data-name="' + name + '" data-address="' + address + '" data-lat="' + lat + '" data-lng="' + lng + '"><div class="person-icon left"><i class="fa fa-user" aria-hidden="true"></i></div><div class="person-info left"><p class="person-name">' + name + '</p><p class="person-address">' + address + '</p></div><div class="person-options"><p><i class="fa fa-pencil" aria-hidden="true"></i></p><p><i class="fa fa-trash" aria-hidden="true"></i></p></div></li>');
   $('#group-list').append(newPersonItem);
 }
 
 function getList() {
   group = [];
   $('li.person').each(function() {
-    var newPerson = new Person($(this).attr('data-name'), $(this).attr('data-address'), null, null, null);
+    var name = $(this).attr('data-name');
+    var add = $(this).attr('data-address');
+    var lat = $(this).attr('data-lat');
+    var lng = $(this).attr('data-lng');
+    var noti = null;
+    var method = null;
+    var cont = null;
+
+    var newPerson = new Person(name, add, lat, lng, noti, method, cont);
     group.push(newPerson);
   });
 }
@@ -106,7 +113,7 @@ $('#add-person-btn').on('click', function(e) {
 
   var name = $('#name-input').val().trim();
   var address = $('#address-input').val().trim();
-  var coords = convertToCoords(address);
+  var coords = convertToCoords(address); //ajax callback return issue
 
   $('#name-input').val('');
   $('#address-input').val('');
@@ -119,5 +126,3 @@ $('#add-person-btn').on('click', function(e) {
   });
 });
 
-var test = convertToCoords("2833 Arbor Springs Trace, Tucker, GA 30084");
-console.log(test);
