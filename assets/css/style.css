@@ -111,7 +111,7 @@ h5 {
   font-size: 35px
 }
 
-ul.group-list {
+ul#group-list {
   padding: 0 25px !important;
 }
 
@@ -129,8 +129,17 @@ div.person-icon {
 
 div.person-info {
   display: inline;
-  font-size: 20px;
   margin-right: 8px;
+  min-width: 75%;
+  max-width: 75%;
+}
+
+p.person-name {
+  width: 90%;
+  font-size: 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 p.person-address {
