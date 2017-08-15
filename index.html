@@ -44,8 +44,8 @@
       </div>
     </div>
     <div class="member-btns">
-      <a href="#group-modal"><i id="group-btn" class="fa fa-users white-text" aria-hidden="true" href="#group-info"></i></a>
-      <i id="add-member-btn" class="fa fa-user-plus white-text" aria-hidden="true" href="#new-member-form"></i>
+      <i id="group-modal-btn" class="fa fa-users white-text" aria-hidden="true"></i>
+      <i id="person-modal-btn" class="fa fa-user-plus white-text" aria-hidden="true"></i>
     </div>
   </header>
   <div id="map">  
@@ -55,9 +55,12 @@
   <div id="group-info" class="modal modal-fixed-footer">
     <div class="modal-content">
       <h5>Group Info</h5>
-      <ul class="group-list">
-        <!-- <li class="person">
-          <div class="person-icon left"><i class="fa fa-user" aria-hidden="true"></i></div>
+      <ul id="group-list">
+<!-- 
+        <li class="person">
+          <div class="person-icon left">
+            <i class="fa fa-user" aria-hidden="true"></i>
+          </div>
           <div class="person-info left">
             Jieun
             <p class="person-address">2833 Arbor Springs Trace, Tucker, GA 30084</p>
@@ -66,7 +69,8 @@
             <p><i class="fa fa-pencil" aria-hidden="true"></i></p>
             <p><i class="fa fa-trash" aria-hidden="true"></i></p>
           </div>
-        </li> -->
+        </li>
+         -->
       </ul>
     </div>
     <div class="modal-footer">
@@ -80,13 +84,13 @@
       <h4>New Person</h4>
       <form>
         <label for="name">Name</label>
-        <input type="text" name="name">
+        <input type="text" name="name" id="name-input">
         <label for="location">Location</label>
-        <input type="text" name="location">
+        <input type="text" name="location" id="address-input">
       </form>
     </div>
     <div class="modal-footer">
-      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">ADD</a>
+      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat" id="add-person-btn">ADD</a>
     </div>
   </div>
 

@@ -145,3 +145,7 @@ p.person-address {
 i.fa.fa-pencil {
   margin-bottom: 7px;
 }
+
+.pac-container {
+  z-index: 1051 !important;
+}
