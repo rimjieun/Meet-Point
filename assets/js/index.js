@@ -1,19 +1,22 @@
-(function getLocation() {
-  if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(storePosition);
-  } else { 
-      console.log('Geolocation is not supported by this browser.');
-  }
-})();
+var map;
 
-function initMap(center) {
-  var map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 11,
-    center: center,
-    mapTypeControlOptions: {
-      mapTypeIds: []
-    }
+if (navigator.geolocation) {
+  navigator.geolocation.getCurrentPosition(function(position) {
+    map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 11,
+      center: {
+        lat: Number(position.coords.latitude),
+        lng: Number(position.coords.longitude)
+      },
+      mapTypeControlOptions: {
+        mapTypeIds: []
+      }
+    });
   });
+} else {
+  console.log('Geolocation is not supported by this browser.');
+}
+  
 
   // var marker = new google.maps.Marker({
   //   draggable: true,
@@ -28,23 +31,35 @@ function initMap(center) {
   //   currentLongitude = latLng.lng();
   //   console.log(currentLatitude, currentLongitude);
   // }); 
-}
+// }
 
-function createMarker(lat, lng) {
-  var marker = new google.maps.Marker({
+function createPersonMarker(lat, lng) {
+  var personMarker = new google.maps.Marker({
     animation: google.maps.Animation.DROP,
-    position: {lat: lat, lng: lng},
+    position: {
+      lat: lat,
+      lng: lng},
     map: map
   });
 }
 
-function storePosition(position) {
-  var center = {
-    lat: Number(position.coords.latitude),
-    lng: Number(position.coords.longitude)
-  };
-  initMap(center);
+function createMidMarker(lat, lng) {
+  var midMarker = new google.maps.Marker({
+    animation: google.maps.Animation.DROP,
+    position: {
+      lat: lat,
+      lng: lng},
+    map: map
+  });
 }
+
+// function storePosition(position) {
+//   var center = {
+//     lat: Number(position.coords.latitude),
+//     lng: Number(position.coords.longitude)
+//   };
+//   initMap(center);
+// }
 
 var autocomplete = new google.maps.places.Autocomplete(document.getElementById('address-input'));
 
@@ -114,7 +129,7 @@ function getList() {
   });
 }
 
-$('#add-person-btn').on('click', function(e) {
+$('#add-person-btn1').on('click', function(e) {
   e.preventDefault();
 
   var name = $('#name-input').val().trim();
@@ -127,6 +142,7 @@ $('#add-person-btn').on('click', function(e) {
     lng = data.results[0].geometry.location.lng;
   });
 
+  createPersonMarker(lat, lng);
 
   $('#name-input').val('');
   $('#address-input').val('');
@@ -135,10 +151,19 @@ $('#add-person-btn').on('click', function(e) {
 
   getList();
 
+  var totalLat = 0;
+  var totalLng = 0;
+  var numPeople = 0;
+
   group.forEach(function(person) {
-    console.log("person: " + person.lat, person.lng);
-    createMarker(Number(person.lat), Number(person.lng));
-
+    totalLat += Number(person.lat);
+    totalLng += Number(person.lng);
+    numPeople++;
   });
-});
 
+  var meanLat = totalLat/numPeople;
+  var meanLng = totalLng/numPeople;
+
+  createMidMarker(meanLat, meanLng);
+
+});
