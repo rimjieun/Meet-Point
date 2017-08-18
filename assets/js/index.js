@@ -1,4 +1,5 @@
 var map;
+var midMarker;
 
 if (navigator.geolocation) {
   navigator.geolocation.getCurrentPosition(function(position) {
@@ -16,22 +17,6 @@ if (navigator.geolocation) {
 } else {
   console.log('Geolocation is not supported by this browser.');
 }
-  
-
-  // var marker = new google.maps.Marker({
-  //   draggable: true,
-  //   animation: google.maps.Animation.DROP,
-  //   position: center,
-  //   map: map
-  // });
-
-  // google.maps.event.addListener(marker, 'dragend', function(marker){
-  //   var latLng = marker.latLng; 
-  //   currentLatitude = latLng.lat();
-  //   currentLongitude = latLng.lng();
-  //   console.log(currentLatitude, currentLongitude);
-  // }); 
-// }
 
 function createPersonMarker(lat, lng) {
   var personMarker = new google.maps.Marker({
@@ -44,8 +29,9 @@ function createPersonMarker(lat, lng) {
 }
 
 function createMidMarker(lat, lng) {
-  var midMarker = new google.maps.Marker({
+  midMarker = new google.maps.Marker({
     animation: google.maps.Animation.DROP,
+    draggable: true,
     position: {
       lat: lat,
       lng: lng},
@@ -166,4 +152,11 @@ $('#add-person-btn1').on('click', function(e) {
 
   createMidMarker(meanLat, meanLng);
 
+});
+
+google.maps.event.addListener(midMarker, 'dragend', function(marker){
+  var latLng = marker.latLng; 
+  currentLatitude = latLng.lat();
+  currentLongitude = latLng.lng();
+  console.log(currentLatitude, currentLongitude);
 });
