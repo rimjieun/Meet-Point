@@ -1,4 +1,7 @@
-window.location = 'https://meet-point.herokuapp.com';
+if (location.protocol != 'https:')
+{
+ location.href = 'https:' + window.location.href.substring(window.location.protocol.length);
+}
 
 var map;
 var midMarker;
