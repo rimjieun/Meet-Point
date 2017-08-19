@@ -1,4 +1,4 @@
-window.location = 'https://meet-points.herokuapp.com';
+window.location = 'https://meet-point.herokuapp.com';
 
 var map;
 var midMarker;
