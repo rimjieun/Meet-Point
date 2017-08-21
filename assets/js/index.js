@@ -1,7 +1,7 @@
-if (location.protocol != 'https:')
-{
- location.href = 'https:' + window.location.href.substring(window.location.protocol.length);
-}
+// if (location.protocol != 'https:')
+// {
+//  location.href = 'https:' + window.location.href.substring(window.location.protocol.length);
+// }
 
 var map;
 var midMarker;
@@ -25,7 +25,8 @@ if (navigator.geolocation) {
 
 function createPersonMarker(lat, lng) {
   var personMarker = new google.maps.Marker({
-    animation: google.maps.Animation.DROP,
+    icon: 'assets/img/red-marker.png',
+    // animation: google.maps.Animation.DROP,
     position: {
       lat: lat,
       lng: lng},
