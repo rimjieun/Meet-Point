@@ -5,6 +5,8 @@
 
 var map;
 var midMarker;
+var markerColors = ['red', 'orange', 'yellow', 'green', 'blue', 'purple'];
+var tempColors = [];
 
 if (navigator.geolocation) {
   navigator.geolocation.getCurrentPosition(function(position) {
@@ -24,9 +26,27 @@ if (navigator.geolocation) {
 }
 
 function createPersonMarker(lat, lng) {
+
+  if (markerColors.length === 0) {
+    markerColors = tempColors;
+    tempColors = [];
+  }
+
+  var randomIndex = Math.floor(Math.random() * markerColors.length);
+  var color = markerColors[randomIndex];
+  var temp = markerColors.splice(randomIndex, 1);
+  tempColors.push(temp);
+
+  var icon = {
+    url: 'assets/img/' + color + '-marker.png', // url
+    scaledSize: new google.maps.Size(50, 50), // scaled size
+    origin: new google.maps.Point(0,0), // origin
+    anchor: new google.maps.Point(0, 0) // anchor
+  };
+
   var personMarker = new google.maps.Marker({
-    icon: 'assets/img/red-marker.png',
-    // animation: google.maps.Animation.DROP,
+    icon: icon,
+    animation: google.maps.Animation.DROP,
     position: {
       lat: lat,
       lng: lng},
@@ -156,8 +176,9 @@ $('#add-person-btn1').on('click', function(e) {
   var meanLat = totalLat/numPeople;
   var meanLng = totalLng/numPeople;
 
-  createMidMarker(meanLat, meanLng);
-
+  if (numPeople > 1) {
+    createMidMarker(meanLat, meanLng);
+  }
 });
 
 google.maps.event.addListener(midMarker, 'dragend', function(marker){
