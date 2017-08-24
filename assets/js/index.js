@@ -164,7 +164,7 @@ function createMeanMarker() {
       newLat = marker.latLng.lat();
       newLng = marker.latLng.lng();
       updateQueryCoords(newLat, newLng);
-      updateUrlParams();
+      updateUrlParams(queryData);
     });
   }
 }
