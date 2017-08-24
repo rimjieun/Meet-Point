@@ -11,9 +11,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.text());
 app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
 
-// app.get('/', function(req, res) {
-  
-// });
+app.get('/', function(req, res) {
+  res.json('asdfsdfsadf');  
+});
 
 app.listen(PORT, function() {
   console.log('App listening on port: ' + PORT);
