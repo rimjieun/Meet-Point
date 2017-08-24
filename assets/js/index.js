@@ -189,7 +189,13 @@ function buildQueryString(data) {
 }
 
 function searchLocations() {
-  console.log(window.location.search);
+  var paramsString = window.location.search;
+  paramsString.slice(1, paramsString.length - 1);
+  console.log(paramsString);
+
+  var queryTerm = ;
+  var queryLat = ;
+  var queryLng = ;
 }
 
 //WHEN ADD PERSON***************************************************
