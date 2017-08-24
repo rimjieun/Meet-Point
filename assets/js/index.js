@@ -208,14 +208,8 @@ function searchLocations() {
 
   console.log('params: ' + querySearch + ', ' + queryLat + ', ' + queryLng);
 
-  $.ajax({
-    url: 'https://api.yelp.com/v3/businesses/search?term=cafe&latitude=33.893793147220464&longitude=-84.15886765214833',
-    headers: { 'Authorization': 'Bearer ' + process.env.ACCESS_TOKEN},
-    method: 'POST'
-  }).then(function(data) {
-    console.log("yelp data: " + data);
-  }).catch(function(err) {
-    console.log(err);
+  $.get('/search', function(data) {
+    console.log(data);
   });
 
 }
