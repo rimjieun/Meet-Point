@@ -158,6 +158,8 @@ function createMeanMarker() {
       map: map
     });
 
+    updateQueryCoords(meanLat, meanLng);
+
     midMarker.addListener('dragend', function(marker) {
       var latLng = marker.latLng;
       currentLatitude = latLng.lat();
@@ -174,7 +176,7 @@ function updateQueryCoords(lat, lng) {
 }
 
 function updateQueryTerm(term) {
-  queryData.term = term;
+  queryData.search = term;
 }
 
 function buildQueryString(data) {
@@ -184,6 +186,10 @@ function buildQueryString(data) {
   }
   var queryString = "?" + queryArray.join('&');
   history.pushState({}, '', queryString);
+}
+
+function searchLocations() {
+  console.log(window.location.search);
 }
 
 //WHEN ADD PERSON***************************************************
@@ -231,12 +237,3 @@ $('#search-form').submit(function(e) {
   console.log("query data: " + JSON.stringify(queryData, null, 2));
   buildQueryString(queryData);
 });
-
-//DRAG MEAN MARKER LISTENER*************************************************
-// google.maps.event.addListener(midMarker, 'dragend', function(marker) {
-//   console.log("hello");
-//   var latLng = marker.latLng;
-//   currentLatitude = latLng.lat();
-//   currentLongitude = latLng.lng();
-//   console.log(currentLatitude, currentLongitude);
-// });
