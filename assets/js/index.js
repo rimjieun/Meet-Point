@@ -269,4 +269,4 @@ $('#search-form').submit(function(e) {
   // Testing to see if submit event handler is working
   updateUrlParams(queryData);
   searchLocations();
-});
+})
