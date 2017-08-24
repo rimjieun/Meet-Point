@@ -165,6 +165,7 @@ function createMeanMarker() {
       newLng = marker.latLng.lng();
       updateQueryCoords(newLat, newLng);
       updateUrlParams(queryData);
+
     });
   }
 }
@@ -175,7 +176,7 @@ function updateQueryCoords(lat, lng) {
 }
 
 function updateQueryTerm(term) {
-  queryData.search = term;
+  queryData.term = term;
 }
 
 function updateUrlParams(data) {
@@ -185,11 +186,12 @@ function updateUrlParams(data) {
   }
   var queryString = "?" + queryArray.join('&');
   history.pushState({}, '', queryString);
+  searchLocations();
 }
 
 function searchLocations() {
   var paramsArray = [];
-  var paramsString = window.location.search;
+  var paramsString = window.location.term;
   var ret = paramsString.slice(1, paramsString.length).split('&');
 
   ret.forEach(function(data) {
@@ -202,14 +204,14 @@ function searchLocations() {
 
   var paramsObject = new Map(paramsArray);
 
-  var querySearch = paramsObject.get('search');
+  var queryTerm = paramsObject.get('term');
   var queryLat = paramsObject.get('lat');
   var queryLng = paramsObject.get('lng');
 
-  console.log('params: ' + querySearch + ', ' + queryLat + ', ' + queryLng);
+  console.log('params: ' + queryTerm + ', ' + queryLat + ', ' + queryLng);
 
   var data = {
-    search: querySearch,
+    term: queryTerm,
     lat: queryLat,
     lng: queryLng
   };
@@ -219,12 +221,6 @@ function searchLocations() {
   });
 
 }
-
-// function yelpAPIRequest(search, lat, lng) {
-//   $.ajax({
-//     url: 
-//   })
-// }
 
 //WHEN ADD PERSON***************************************************
 $('#add-person-btn1').on('click', function(e) {
@@ -268,5 +264,6 @@ $('#search-form').submit(function(e) {
 
   // Testing to see if submit event handler is working
   updateUrlParams(queryData);
-  searchLocations();
-})
+});
+
+$(".button-collapse").sideNav();
