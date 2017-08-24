@@ -236,4 +236,5 @@ $('#search-form').submit(function(e) {
   console.log(window.location);
   console.log("query data: " + JSON.stringify(queryData, null, 2));
   buildQueryString(queryData);
+  searchLocations();
 });
