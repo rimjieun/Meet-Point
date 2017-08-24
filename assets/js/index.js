@@ -189,13 +189,25 @@ function buildQueryString(data) {
 }
 
 function searchLocations() {
+  var paramsArray = [];
   var paramsString = window.location.search;
-  paramsString.slice(1, paramsString.length - 1);
-  console.log(paramsString);
+  var ret = paramsString.slice(1, paramsString.length).split('&');
 
-  var queryTerm = ;
-  var queryLat = ;
-  var queryLng = ;
+  ret.forEach(function(data) {
+    var param = [
+      data.split('=')[0],
+      data.split('=')[1]
+    ];
+    paramsArray.push(param);
+  });
+
+  var paramsObject = new Map(paramsArray);
+
+  var querySearch = paramsObject.get('search');
+  var queryLat = paramsObject.get('lat');
+  var queryLng = paramsObject.get('lng');
+
+  console.log('params: ' + querySearch + ', ' + queryLat + ', ' + queryLng);
 }
 
 //WHEN ADD PERSON***************************************************
