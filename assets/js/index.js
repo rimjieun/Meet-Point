@@ -220,11 +220,11 @@ function searchLocations() {
 
 }
 
-function yelpAPIRequest(search, lat, lng) {
-  $.ajax({
-    url: 
-  })
-}
+// function yelpAPIRequest(search, lat, lng) {
+//   $.ajax({
+//     url: 
+//   })
+// }
 
 //WHEN ADD PERSON***************************************************
 $('#add-person-btn1').on('click', function(e) {
