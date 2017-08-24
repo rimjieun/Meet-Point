@@ -32,5 +32,6 @@ app.get('/search', function(req, res) {
 });
 
 app.listen(PORT, function() {
+  console.log(process.env);
   console.log('App listening on port: ' + PORT);
 });
