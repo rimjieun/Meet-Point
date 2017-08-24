@@ -208,7 +208,7 @@ function searchLocations() {
 
   console.log('params: ' + querySearch + ', ' + queryLat + ', ' + queryLng);
 
-  $.get('/search', function(data) {
+  $.get('/search').done(function(data) {
     console.log(data);
   });
 
