@@ -227,7 +227,7 @@ $('#search-form').submit(function(e) {
   updateQueryTerm(term);
 
   // Testing to see if submit event handler is working
-  console.log(window.location.search);
+  console.log(window.location);
   console.log("query data: " + JSON.stringify(queryData, null, 2));
   buildQueryString(queryData);
 });
