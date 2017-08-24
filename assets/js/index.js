@@ -182,7 +182,7 @@ function buildQueryString(data) {
   for (var d in data) {
     queryArray.push(encodeURIComponent(d) + '=' + encodeURIComponent(data[d]));
   }
-  var queryString = queryArray.join('&');
+  var queryString = "?" + queryArray.join('&');
   history.pushState({}, '', queryString);
 }
 
