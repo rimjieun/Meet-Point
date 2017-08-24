@@ -161,11 +161,10 @@ function createMeanMarker() {
     updateQueryCoords(meanLat, meanLng);
 
     midMarker.addListener('dragend', function(marker) {
-      var latLng = marker.latLng;
-      currentLatitude = latLng.lat();
-      currentLongitude = latLng.lng();
-      console.log(currentLatitude, currentLongitude);
-      updateQueryCoords(currentLatitude, currentLongitude);
+      newLat = marker.latLng.lat();
+      newLng = marker.latLng.lng();
+      updateQueryCoords(newLat, newLng);
+      updateUrlParams();
     });
   }
 }
@@ -179,7 +178,7 @@ function updateQueryTerm(term) {
   queryData.search = term;
 }
 
-function buildQueryString(data) {
+function updateUrlParams(data) {
   var queryArray = [];
   for (var d in data) {
     queryArray.push(encodeURIComponent(d) + '=' + encodeURIComponent(data[d]));
@@ -208,6 +207,9 @@ function searchLocations() {
   var queryLng = paramsObject.get('lng');
 
   console.log('params: ' + querySearch + ', ' + queryLat + ', ' + queryLng);
+
+  //YELP API REQUEST
+
 }
 
 //WHEN ADD PERSON***************************************************
@@ -251,8 +253,6 @@ $('#search-form').submit(function(e) {
   updateQueryTerm(term);
 
   // Testing to see if submit event handler is working
-  console.log(window.location);
-  console.log("query data: " + JSON.stringify(queryData, null, 2));
-  buildQueryString(queryData);
+  updateUrlParams(queryData);
   searchLocations();
 });
