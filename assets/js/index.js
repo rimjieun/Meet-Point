@@ -1,3 +1,10 @@
+//VARIABLES******************************************************
+var map;
+var midMarker;
+var markerColors = ['red', 'yellow', 'green', 'blue', 'purple'];
+var tempColors = [];
+var queryData = {};
+
 // Make sure route is secure
 // if (location.protocol != 'https:')
 // {
@@ -37,11 +44,7 @@ $('#person-modal-btn').on('click', function() {
   $('#new-member-form').modal('open');
 });
 
-//VARIABLES******************************************************
-var map;
-var midMarker;
-var markerColors = ['red', 'yellow', 'green', 'blue', 'purple'];
-var tempColors = [];
+
 
 //CLEAR INPUT FIELDS**********************************************
 function clearInputFields() {
@@ -51,7 +54,7 @@ function clearInputFields() {
 }
 
 //CREATE PERSON MARKER********************************************
-function createPersonMarker(lat, lng) {
+function createPersonMarker(lat, lng, color) {
 
   // Create icon to be used as marker
   var icon = {
@@ -65,19 +68,6 @@ function createPersonMarker(lat, lng) {
   var personMarker = new google.maps.Marker({
     icon: icon,
     animation: google.maps.Animation.DROP,
-    position: {
-      lat: lat,
-      lng: lng
-    },
-    map: map
-  });
-}
-
-//CREATE MEAN MARKER***********************************************
-function createMeanMarker(lat, lng) {
-  midMarker = new google.maps.Marker({
-    animation: google.maps.Animation.DROP,
-    draggable: true,
     position: {
       lat: lat,
       lng: lng
@@ -125,8 +115,8 @@ function selectRandomColor() {
 }
 
 //ADD PERSON TO LIST************************************************
-function addPerson(name, address, lat, lng) {
-  var newPersonItem = $('<li class="person" data-name="' + name + '" data-address="' + address + '" data-lat="' + lat + '" data-lng="' + lng + '"><div class="person-icon left"><i class="fa fa-user" aria-hidden="true"></i></div><div class="person-info left"><p class="person-name">' + name + '</p><p class="person-address">' + address + '</p></div><div class="person-options"><p><i class="fa fa-pencil" aria-hidden="true"></i></p><p><i class="fa fa-trash" aria-hidden="true"></i></p></div></li>');
+function addPerson(name, address, lat, lng, color) {
+  var newPersonItem = $('<li class="person" data-name="' + name + '" data-address="' + address + '" data-lat="' + lat + '" data-lng="' + lng + '"><div class="person-icon left"><img src="assets/img/' + color + '-marker.png" class="person-icon"></div><div class="person-info left"><p class="person-name">' + name + '</p><p class="person-address">' + address + '</p></div><div class="person-options"><p><i class="fa fa-pencil" aria-hidden="true"></i></p><p><i class="fa fa-trash" aria-hidden="true"></i></p></div></li>');
   $('#group-list').append(newPersonItem);
 }
 
@@ -140,23 +130,59 @@ function createMeanMarker() {
 
   $('li.person').each(function() {
     numPeople++;
-    lat += Number($(this).attr('data-lat'));
-    lng += Number($(this).attr('data-lng'));
+    totalLat += Number($(this).attr('data-lat'));
+    totalLng += Number($(this).attr('data-lng'));
   });
 
-  var meanLat = lat/numPeople;
-  var meanLng = lng/numPeople;
+  var meanLat = totalLat / numPeople;
+  var meanLng = totalLng / numPeople;
 
-  midMarker = new google.maps.Marker({
-    animation: google.maps.Animation.DROP,
-    draggable: true,
-    position: {
-      lat: meanLat,
-      lng: meanLng
-    },
-    map: map
-  });
+  if (numPeople > 1) {
 
+    var icon = {
+      url: 'assets/img/mean-marker.png', // url
+      scaledSize: new google.maps.Size(50, 50), // scaled size
+      origin: new google.maps.Point(0, 0), // origin
+      anchor: new google.maps.Point(25, 50) // anchor
+    };
+
+    midMarker = new google.maps.Marker({
+      icon: icon,
+      animation: google.maps.Animation.DROP,
+      draggable: true,
+      crossOnDrag: false,
+      position: {
+        lat: meanLat,
+        lng: meanLng
+      },
+      map: map
+    });
+
+    midMarker.addListener('dragend', function(marker) {
+      var latLng = marker.latLng;
+      currentLatitude = latLng.lat();
+      currentLongitude = latLng.lng();
+      console.log(currentLatitude, currentLongitude);
+      updateQueryCoords(currentLatitude, currentLongitude);
+    });
+  }
+}
+
+function updateQueryCoords(lat, lng) {
+  queryData.lat = lat;
+  queryData.lng = lng;
+}
+
+function updateQueryTerm(term) {
+  queryData.term = term;
+}
+
+function buildQueryString(data) {
+  var ret = [];
+  for (var d in data) {
+    ret.push(encodeURIComponent(d) + '=' + encodeURIComponent(data[d]));
+  }
+  return ret.join('&');
 
 }
 
@@ -173,57 +199,43 @@ $('#add-person-btn1').on('click', function(e) {
   var lat;
   var lng;
 
+  clearInputFields();
+
   // Convert person address to coords to get lat and lng
   geocode(address).done(function(data) {
     lat = data.results[0].geometry.location.lat;
     lng = data.results[0].geometry.location.lng;
   });
 
-  // Create person marker on map
-  createPersonMarker(lat, lng);
-
-  clearInputFields();
-
   // Add person to DOM list
-  addPerson(name, address, lat, lng);
+  addPerson(name, address, lat, lng, color);
 
-  // Get people from DOM list
-  getList();
+  // Create person marker on map
+  createPersonMarker(lat, lng, color);
 
-  // Initiate variables for mean calculation
-  var totalLat = 0;
-  var totalLng = 0;
-  var numPeople = 0;
+  createMeanMarker();
 
-  // For every person on list, add to total
-  group.forEach(function(person) {
-    totalLat += Number(person.lat);
-    totalLng += Number(person.lng);
-    numPeople++;
-  });
-
-  // Calculate mean lat and lng
-  var meanLat = totalLat / numPeople;
-  var meanLng = totalLng / numPeople;
-
-  // If more than one person on list, create mean marker
-  if (numPeople > 1) {
-    createMidMarker(meanLat, meanLng);
-  }
 });
 
 //ON SEARCH BUSINESSES********************************************
 $('#search-form').submit(function(e) {
   // Prevent event default action
   e.preventDefault();
+
+  var term = $('#search').val().trim();
+
+  updateQueryTerm(term);
+
   // Testing to see if submit event handler is working
-  alert('working');
+  console.log(window.location.search);
+  console.log("query data: " + JSON.stringify(queryData, null, 2));
 });
 
-//DRAG MEAN MARKER*************************************************
-google.maps.event.addListener(midMarker, 'dragend', function(marker) {
-  var latLng = marker.latLng;
-  currentLatitude = latLng.lat();
-  currentLongitude = latLng.lng();
-  console.log(currentLatitude, currentLongitude);
-});
+//DRAG MEAN MARKER LISTENER*************************************************
+// google.maps.event.addListener(midMarker, 'dragend', function(marker) {
+//   console.log("hello");
+//   var latLng = marker.latLng;
+//   currentLatitude = latLng.lat();
+//   currentLongitude = latLng.lng();
+//   console.log(currentLatitude, currentLongitude);
+// });

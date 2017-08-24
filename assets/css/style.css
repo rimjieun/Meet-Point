@@ -79,7 +79,7 @@ div.member-btns {
   font-size: 30px;
 }
 
-i.fa.fa-users,
+/*i.fa.fa-users,*/
 i.fa.fa-user-plus {
   padding: 0 5px;
 }
@@ -122,7 +122,7 @@ li.person {
 div.person-icon {
   display: inline;
   font-size: 25px;
-  margin-right: 25px;
+  margin-right: 15px;
   position: relative;
   top: 10px;
 }
@@ -157,4 +157,10 @@ i.fa.fa-pencil {
 
 .pac-container {
   z-index: 1051 !important;
+}
+
+.person-icon {
+  width: 38px;
+  position: relative;
+  bottom: 10px;
 }
