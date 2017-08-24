@@ -19,6 +19,9 @@ app.get('/', function(req, res) {
 });
 
 app.get('/search', function(req, res) {
+
+  console.log(req.body);
+
   var options = {
     url: 'https://api.yelp.com/v3/businesses/search?term=cafe&latitude=33.893793147220464&longitude=-84.15886765214833',
     headers: {
