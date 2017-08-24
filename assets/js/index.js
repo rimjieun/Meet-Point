@@ -178,12 +178,12 @@ function updateQueryTerm(term) {
 }
 
 function buildQueryString(data) {
-  var ret = [];
+  var queryArray = [];
   for (var d in data) {
-    ret.push(encodeURIComponent(d) + '=' + encodeURIComponent(data[d]));
+    queryArray.push(encodeURIComponent(d) + '=' + encodeURIComponent(data[d]));
   }
-  return ret.join('&');
-
+  var queryString = queryArray.join('&');
+  history.pushState({}, '', queryString);
 }
 
 //WHEN ADD PERSON***************************************************
@@ -229,6 +229,7 @@ $('#search-form').submit(function(e) {
   // Testing to see if submit event handler is working
   console.log(window.location.search);
   console.log("query data: " + JSON.stringify(queryData, null, 2));
+  buildQueryString(queryData);
 });
 
 //DRAG MEAN MARKER LISTENER*************************************************
