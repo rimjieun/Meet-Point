@@ -191,7 +191,7 @@ function updateUrlParams(data) {
 
 function searchLocations() {
   var paramsArray = [];
-  var paramsString = window.location.term;
+  var paramsString = window.location.search;
   var ret = paramsString.slice(1, paramsString.length).split('&');
 
   ret.forEach(function(data) {
