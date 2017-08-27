@@ -266,4 +266,4 @@ $('#search-form').submit(function(e) {
   updateUrlParams(queryData);
 });
 
-// $(".button-collapse").sideNav();
+$(".button-collapse").sideNav();
