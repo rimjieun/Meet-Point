@@ -91,9 +91,7 @@ i.fa.fa-user-plus:hover {
 }
 
 #map {
-  width: 640px;
-  height: 640px;
-  /*height: 92%;*/
+  height: 92%;
   position: relative;
   z-index: 10;
 }
