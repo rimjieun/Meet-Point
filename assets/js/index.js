@@ -253,6 +253,11 @@ $('#add-person-btn1').on('click', function(e) {
 
 });
 
+var collapseCount = 0;
+
+$('.button-collapse').sideNav();
+
+
 //ON SEARCH BUSINESSES********************************************
 $('#search-form').submit(function(e) {
   // Prevent event default action
@@ -260,10 +265,16 @@ $('#search-form').submit(function(e) {
 
   var term = $('#search').val().trim();
 
+
+  $('.button-collapse').trigger('click');
+
   updateQueryTerm(term);
 
   // Testing to see if submit event handler is working
   updateUrlParams(queryData);
 });
 
-$(".button-collapse").sideNav();
+$('#test').on('click', function() {
+  alert('hello');
+});
+

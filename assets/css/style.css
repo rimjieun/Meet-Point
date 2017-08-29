@@ -164,3 +164,20 @@ i.fa.fa-pencil {
   position: relative;
   bottom: 10px;
 }
+
+.button-collapse {
+  pointer-events: none;
+}
+
+#sidenav-overlay {
+  opacity: 0 !important;
+}
+
+.side-nav {
+  height: 92%;
+  z-index: 25;
+  top: initial;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+}
