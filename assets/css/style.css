@@ -181,3 +181,16 @@ i.fa.fa-pencil {
   left: 0;
   bottom: 0;
 }
+
+ul#slide-out {
+  background: #f5f2f0;
+  width: 360px;
+}
+
+ul#slide-out::-webkit-scrollbar {
+  display: none;
+}
+
+p[class^='place'] {
+  line-height: 1;
+}

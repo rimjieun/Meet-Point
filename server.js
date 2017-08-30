@@ -21,7 +21,8 @@ app.get('/', function(req, res) {
 app.get('/geocode', function(req, res) {
 
   var options = {
-    url: 'https://maps.googleapis.com/maps/api/geocode/json?address=' + req.query.address + '&api_key=' + process.env.GEOCODE_API_KEY
+    url: 'https://maps.googleapis.com/maps/api/geocode/json?address=' + req.query.address + '&api_key=' + process.env.GEOCODE_API_KEY,
+    json: true
   };
 
   request(options, function(err, resp, body) {
@@ -36,7 +37,8 @@ app.get('/search', function(req, res) {
     url: 'https://api.yelp.com/v3/businesses/search?term=' + req.query.term + '&latitude=' + req.query.lat + '&longitude=' + req.query.lng,
     headers: {
       'Authorization': 'Bearer ' + process.env.YELP_ACCESS_TOKEN
-    }
+    },
+    json: true
   };
 
   request(options, function(err, resp, body) {
