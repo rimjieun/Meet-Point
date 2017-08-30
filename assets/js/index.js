@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  // init.reroute();
+  init.reroute();
   init.map();
   init.autocomplete();
   init.modal();
