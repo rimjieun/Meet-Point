@@ -189,6 +189,17 @@ function updateUrlParams(data) {
   searchLocations();
 }
 
+var get = {
+  geocodeData: function(data) {
+
+  },
+  yelpData: function(data) {
+    $.get('/search', data).done(function(res) {
+      console.log(res);
+    });
+  }
+}
+
 function searchLocations() {
   var paramsArray = [];
   var paramsString = window.location.search;
@@ -216,9 +227,7 @@ function searchLocations() {
     lng: queryLng
   };
 
-  $.get('/search', data).done(function(data) {
-    console.log(data);
-  });
+  get.yelpData(data);
 
 }
 

@@ -18,12 +18,16 @@ app.get('/', function(req, res) {
   res.sendFile(path.join(__dirname, 'index.html')) 
 });
 
+app.get('/geocode', function(req, res) {
+
+});
+
 app.get('/search', function(req, res) {
 
   var options = {
     url: 'https://api.yelp.com/v3/businesses/search?term=' + req.query.term + '&latitude=' + req.query.lat + '&longitude=' + req.query.lng,
     headers: {
-      'Authorization': 'Bearer ' + 'Dc0cWxN91fsh9SBGnRKaCUvIRasEhBJDwzYIx6gaIKcGz36YXj-aU7L9tB9w7NDEtlCphDk48MZIAbUW8cHyfKfxCE0ifGrewI-qqsls7qdrp13jTua72G6MqL-eWXYx'
+      'Authorization': 'Bearer ' + process.env.ACCESS_TOKEN
     }
   };
 
