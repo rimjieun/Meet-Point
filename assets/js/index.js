@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  init.reroute();
+  // init.reroute();
   init.map();
   init.autocomplete();
   init.modal();
@@ -21,6 +21,7 @@ $(document).ready(function() {
     updateQueryTerm(term);
     updateUrlParams(queryData);
   });
+
 });
 
 //VARIABLES******************************************************

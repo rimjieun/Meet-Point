@@ -28,7 +28,7 @@ body {
 }
 
 header {
-  height: 8%;
+  height: 60px;
   font-size: 42px;
   line-height: 50px;
   text-align: right;
@@ -91,7 +91,7 @@ i.fa.fa-user-plus:hover {
 }
 
 #map {
-  height: 92%;
+  height: 100%;
   position: relative;
   z-index: 10;
 }
@@ -183,7 +183,7 @@ i.fa.fa-pencil {
 }
 
 ul#slide-out {
-  background: #f5f2f0;
+  background: white;
   width: 360px;
 }
 
@@ -191,6 +191,33 @@ ul#slide-out::-webkit-scrollbar {
   display: none;
 }
 
+ul#slide-out li {
+  border-bottom: 1px solid #f5f2f0;
+  display: flex;
+}
+
+div.place-info {
+  flex-direction: column;
+  padding: 10px;
+}
+
+img.place-image {
+  width: 100px;
+  height: 100px;
+}
+
 p[class^='place'] {
-  line-height: 1;
+  line-height: 1.2;
+}
+
+p.place-name {
+  font-size: 20px;
+}
+
+p.place-categories {
+  font-size: 10px;
+}
+
+p.place-rating {
+
 }
