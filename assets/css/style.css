@@ -202,11 +202,6 @@ div.place-info {
   padding: 10px;
 }
 
-img.place-image {
-  width: 100px;
-  height: 100px;
-}
-
 p[class^='place'] {
   line-height: 1.2;
 }
@@ -221,4 +216,11 @@ p.place-categories {
 
 p.place-rating {
 
+}
+
+img.place-thumbnail {
+  float: left;
+  max-width: 100px;
+  max-height: 100px;
+  overflow: scroll;
 }

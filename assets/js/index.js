@@ -248,7 +248,7 @@ function getSearchResults() {
   };
 
   $.get('/search', data).done(function(res) {
-
+    // console.log('search results: ', res)
     $('#slide-out').empty();
 
     res.businesses.forEach(function(place) {
@@ -271,6 +271,8 @@ function getSearchResults() {
       console.log('yelp api: ' + id, name, img, url, cat, rate, lat, lng, price, add, phone);
       createResultItem(id, name, img, url, cat, rate, lat, lng, price, add, phone);
     });
+  }).catch(function(err) {
+    console.log(err);
   });
 }
 
@@ -292,8 +294,9 @@ function createResultItem(id, name, img, url, cat, rate, lat, lng, price, add, p
   var placeCategories = $('<p class="place-categories">').text(cat);
   var placeRating = $('<p class="place-rating">').text(rate);
   var placePrice = $('<p class="place-price">').text(price);
+  var placeThumb = $('<img class="place-thumbnail">').attr('src', img);
 
-  resultItem.append(placeName).append(placeCategories).append(placeRating).append(placePrice);
+  resultItem.append(placeThumb).append(placeName).append(placeCategories).append(placeRating).append(placePrice);
 
   $('#slide-out').append(resultItem);
 }
