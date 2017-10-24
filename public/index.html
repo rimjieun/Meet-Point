@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Meet-Point</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <!-- Font Awesome Script -->
+  <script src="https://use.fontawesome.com/6b00624f40.js"></script>
+  <!-- Google Maps JavaScript API -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBXVMfGC-uz0W8eYzwy85Kv91y6B1902ig&libraries=places"></script>
+</head>
+<script>
+  function initMap() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function(position) {
+        map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 11,
+          center: {
+            lat: Number(position.coords.latitude),
+            lng: Number(position.coords.longitude)
+          },
+          mapTypeControlOptions: {
+            mapTypeIds: []
+          }
+        });
+      });
+    }
+  }
+
+  initMap();
+</script>
+<body>
+  <div class='app'></div>
+</body>
+</html>
