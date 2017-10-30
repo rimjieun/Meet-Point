@@ -1,0 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
+nav.main-nav {
+  background: orange;
+}

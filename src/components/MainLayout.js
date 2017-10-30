@@ -1,10 +1,11 @@
-import React from 'react';
-import GoogleMap from 'components/Map.js';
+import React, { Component } from 'react'
+import Navbar from './common/Navbar'
 
 const MainLayout = props => (
   <div>
-    <GoogleMap />
+    <Navbar />
+    {props.children}
   </div>
 );
 
-export default MainLayout;
+export default MainLayout
