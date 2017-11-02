@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
-import GoogleMap from './../components/GoogleMap'
+import Map from './../components/Map'
 
 const Home = props => (
   <div>
-    This is the Home page.
-    <GoogleMap />
+    <Map />
   </div>
 );
 
