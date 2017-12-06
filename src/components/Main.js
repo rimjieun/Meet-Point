@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
-import Navbar from './common/Navbar'
+import { Navbar } from './subcomponents'
 
-const MainLayout = props => (
+const Main = props => (
   <div className='main flex-col'>
     <Navbar />
     {props.children}
   </div>
 );
 
-export default MainLayout
+export default Main

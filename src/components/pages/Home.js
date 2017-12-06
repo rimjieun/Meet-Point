@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Map from './../components/Map'
+import { Map } from './../subcomponents'
 
 const Home = props => (
   <div>
